@@ -1209,10 +1209,6 @@ test("HttpGet.second-argument-shape", "Network", "experimental", {}, function()
     error("game:HttpGet(url, true) failed on both public echo endpoints: " .. _tostring(lastError))
 end, {config = "Network", external = true})
 
--- ------------------------------------------------------------
--- Crypt / compression
--- ------------------------------------------------------------
-
 test("base64.roundtrip", "Crypt", "extended",
     {{"crypt.base64encode", "crypt.base64.encode", "crypt.base64_encode", "base64.encode", "base64_encode", "base64encode"},
      {"crypt.base64decode", "crypt.base64.decode", "crypt.base64_decode", "base64.decode", "base64_decode", "base64decode"}},
@@ -1345,7 +1341,7 @@ test("fpscap.roundtrip", "Misc", "extended", {{"setfpscap"}, {"getfpscap"}}, fun
     assertf(math.abs(observed - target) <= 1, "setfpscap/getfpscap mismatch: requested %s observed %s", target, observed)
     return _format("%s -> %s -> %s", original, observed, original)
 end)
----- gbb
+---- 
 
 test("actors.getactors.shape", "Actors", "extended", {{"getactors"}}, function(deps)
     local actors = deps[1]()
@@ -1363,7 +1359,6 @@ test("actors.isparallel.shape", "Actors", "extended", {{"isparallel"}}, function
     return "isparallel=" .. _tostring(value)
 end, {config = "Actors"})
 
--- only behavior test when present
 test("getfunctionbytecode.semantic", "Scripts", "experimental", {{"getfunctionbytecode"}}, function(deps)
     if CONFIG.Experimental == false then
         return "__UUNC_SKIP__:experimental tests disabled"
